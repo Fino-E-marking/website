@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label for="firstname">firstname:</label><br>
+  <input type="text" id="firstname"><br>
+  <label for="lastname">lastname:</label><br>
+  <input type="text" id="lastname"><br>
+  <label for="username">username:</label><br>
+  <input type="text" id="username"><br>
+  <button id="add">add</button>
+  
+
+  <script>
+    let fname = document.getElementById('firstname');
+    let lname = document.getElementById('lastname');
+    let uname = document.getElementById('username');
+    let add = document.getElementById('add');
+    add.addEventListener('click', fun1);
+    const list = [];
+    function fun1() {
+      const namef = fname.value;
+      const namel = lname.value;
+      const nameu = uname.value;
+      list.push({
+        namef,
+        namel,
+        nameu
+      });
+      console.log(list);
+    }
+
+  </script>
+</body>
+</html>
