@@ -1,0 +1,359 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-image: url(../all-icon/background.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.contain-holder{
+  padding: 30px;
+}
+.sectionA-part1 button{
+  width: 30px;
+}
+.sectionA-part1 button img{
+  width: 100%;
+}
+h1{
+  text-align: center;
+  color: green;
+  font-size: 45px;
+}
+.sectionA p{
+  color: green;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+.sectionB{
+  text-align: center;
+}
+.sectionC{
+  background-color: black;
+  height: 170px;
+  padding: 5px 10px 5px 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+.sectionC input{
+  width: 100%;
+  height: 20px;
+  margin-top: 5px;
+}
+.sectionC-part3{
+  padding: 0px 10px;
+  margin-top: 10px;
+
+}
+.sectionC button{
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 5px 0px;
+  border-radius: 5px;
+}
+/*@media only screen and  (min-width: 314px) {
+  .contain-holder{
+    padding: 50px 15px;
+  }
+  h1{
+    font-size: 80px;
+  }
+  .sectionA-part1 button{
+    width: 55px;
+  }
+  .sectionA p{
+    font-size: 49px;
+  }
+  .sectionB{
+    font-size: 25px;
+  }
+  .sectionC{
+    height: 215px;
+    padding: 15px 20px 15px 15px;
+    font-size: 25px;
+    margin-top: 50px;
+  }
+  .sectionC input{
+    height: 30px;
+    margin-top: 5px;
+    font-size: 17px;
+    padding-left: 5px;
+  }
+  .sectionC button{
+    padding: 8px 0px;
+    font-size: 17px;
+  }
+  
+}*/
+@media only screen and  (min-width: 351px) {
+  .sectionC{
+    margin-top: 30px;
+  }
+  
+}
+
+
+@media only screen and  (min-width: 375px) {
+  .contain-holder{
+    padding: 35px 20px;
+  }
+  h1{
+    font-size: 55px;
+  }
+  .sectionA p{
+    font-size: 30px;
+  }
+  .sectionB{
+    font-size: 15px;
+  }
+  .sectionC{
+    height: 170px;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 30px;
+  }
+  
+}
+@media only screen and  (min-width: 414px) {
+  .contain-holder{
+    padding: 15px 15px;
+  }
+  h1{
+    font-size: 60px;
+  }
+  .sectionA-part1 button{
+    width: 40px;
+  }
+  .sectionA p{
+    font-size: 35px;
+  }
+  .sectionB{
+    font-size: 17px;
+  }
+  .sectionC{
+    height: 180px;
+    padding: 15px 20px 15px 15px;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .sectionC input{
+    height: 23px;
+    margin-top: 5px;
+    font-size: 15px;
+    padding-left: 5px;
+  }
+  .sectionC button{
+    font-size: 15px;
+  }
+  
+}
+@media only screen and  (min-width: 500px) {
+  
+  .sectionC{
+    width: 435px;
+  }
+  .sectionC-holder{
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+}
+@media only screen and  (min-width: 617px) {
+  .contain-holder{
+    padding: 35px 18px;
+  }
+  .sectionB{
+    font-size: 20px;
+  }
+  .sectionC{
+    height: 215px;
+    width: 544px;
+    margin: 50px 10px;
+  }
+  .sectionC-holder{
+    display: flex;
+    justify-content: center;
+  }
+  .contain-holder{
+    padding: 0px 18px;
+    max-width: 685px;
+  }
+  .body-contain-holder{
+    display: flex;
+    justify-content: center;
+  }
+  .sectionC{
+    height: 180px;
+    width: 520px;
+    margin: 33px 10px;
+  }
+  
+}
+@media only screen and  (min-width: 1100px) {
+  .contain-holder{
+    padding: 10px 0px 0px 0px;
+    max-width: 685px;
+  }
+  h1{
+    font-size: 100px;
+  }
+  .sectionA-part1 button{
+    width: 70px;
+    margin-left: 0;
+  }
+  .sectionA p{
+    font-size: 70px;
+  }
+  .sectionC{
+    height: 215px;
+    width: 544px;
+    margin: 78px 10px;
+  }
+  
+}
+@media only screen and  (min-width: 1350px) {
+  .sectionB{
+    font-size: 25px;
+  }
+  
+}
+@media only screen and  (min-width: 661px) {
+  .body-contain-holder{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  } 
+  h1{
+    font-size: 100px;
+  }
+  .contain-holder{
+    margin-top: 40px; 
+  }
+  .sectionA p{
+    font-size: 80px;
+  }
+  .sectionB{
+    font-size: 25px;
+  }
+  
+  .sectionC input{
+    height: 30px;
+    margin-top: 5px;
+    font-size: 17px;
+    padding-left: 5px;
+  }
+  
+}
+@media only screen and  (min-width: 900px) {
+  h1{
+    font-size: 110px;
+  }
+  .sectionA p{
+    font-size: 70px;
+  }
+  .sectionC input{
+    height: 38px;
+    font-size: 19px;
+  }
+  .sectionB{
+    font-size: 30px;
+  }
+  
+}
+@media only screen and  (min-width: 1200px) {
+  h1{
+    font-size: 200px;
+  }
+  .sectionA p{
+    font-size: 100px;
+  }
+  .sectionC input{
+    height: 38px;
+    font-size: 19px;
+  }
+  .sectionB{
+    font-size: 40px;
+  }
+  
+}
+@media only screen and  (min-width: 1657px) {
+  .contain-holder{
+    max-width: 780px;
+  }
+  
+}
+@media only screen and  (min-width: 320px) {
+  .body-contain-holder{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+  .contain-holder{
+    padding: 100px 5px 40px 5px;
+  }
+  h1{
+    font-size: 70px;
+  }
+  .sectionA p{
+    font-size: 50px;
+  }
+  .sectionB{
+    font-size: 25px;
+  }
+  .sectionC{
+    margin-top: 30px;
+  }
+  .sectionA-part1 button{
+    width: 50px;
+    height: 45px;
+    margin-bottom: 15px;
+  }
+  
+}
+@media only screen and  (min-width: 465px) {
+  .sectionC input{
+    height: 30px;
+    font-size: 17px;
+  }
+  .sectionC{
+    margin-top: 50px;
+    font-size: 30px;
+    height: 210px;
+  }
+
+
+}
+@media only screen and  (min-width: 1200px) {
+  h1{
+    font-size: 100px;
+  }
+  .sectionA p{
+    font-size: 70px;
+  }
+  .sectionC input{
+    height: 38px;
+    font-size: 19px;
+  }
+  .sectionB{
+    font-size: 30px;
+  }
+  .sectionA-part1 button{
+    width: 75px;
+  }
+  
+  
+}

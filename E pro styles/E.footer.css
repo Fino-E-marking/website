@@ -1,0 +1,15 @@
+footer{
+    font-weight: bold;
+    font-size: 18px;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.code{
+    width: 80px;
+}
+footer .a{
+    font-size: 13px;
+}
