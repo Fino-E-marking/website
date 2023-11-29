@@ -36,7 +36,7 @@
      $hash1 = password_hash($password1, PASSWORD_DEFAULT);
      $verif1 = password_verify($password1, $hash1);
 
-     $sql = "SELECT * FROM users WHERE user = $password ";
+     $sql = "SELECT * FROM users WHERE user ='$username1' ";
      $result = mysqli_query($conn, $sql);
      $find = mysqli_fetch_assoc($result);
      $hash2 = $find["password"];

@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  include("databaseCC.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +14,42 @@
     padding: 5px 0px;
    }
    .sectionC input{
-       margin-top: 5px;
-       margin-bottom: 10px;
-    }
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .error,.profil{
+    color: red;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 0px;
+    margin: 50px 0px 0px 0px ;
+      
+  }
+  .error{
+    margin: 2px 0px;
+  }
+  .sectionC{
+    margin-top: 0px;
+  }
+  .profil{
+    color: green;
+  }
+  @media only screen and  (min-width: 1350px) {
+  .sectionB{
+    font-size: 20px;
+  }
+  
+  }
+  @media only screen and  (min-width: 1100px) {
+  .sectionA p{
+    font-size: 60px;
+  }
+  .sectionC{
+    margin: 0px 10px;
+  } 
+  }
+
   </style>
 </head>
   <body>
@@ -34,9 +71,46 @@
         <section class="sectionB">
           <p class="mobile-1p4">
             E provision is an online platform that  provide quality 
-            goods at good and afortable  prices, to get started login  or <a href="#">create an acount</a> 
+            goods at good and afortable  prices, to get started login  or <a href="registration2.php">create an acount</a> 
           </p>
         </section>
+        <div class="profil">
+          <?php
+            echo "Hello {$_SESSION["firstname"]} {$_SESSION["lastname"]} please signin with your username and password";
+          ?>
+        </div>
+        <div class="error">
+        <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST["username"];
+            $password =  $_POST["password"];
+            $hash1 = password_hash($password, PASSWORD_DEFAULT);
+            $verifA = password_verify($password, $hash1);
+            
+            try {
+              $sql = "SELECT * FROM users WHERE user = '$username' ";
+              $result = mysqli_query($conn, $sql);
+              $find = mysqli_fetch_assoc($result);
+              $hash2 = $find["password"];
+              $verifB = password_verify($password, $hash2);
+              if ($hash2 == null && $verifA !== $verifB) {
+                echo "Invalit username";
+                $hash2 = "";
+              }elseif ($verifA !== $verifB) {
+                echo "Incorrect password";
+              }elseif ($verifA == $verifB) {
+                header("location: home3DD.php");
+              }
+            } catch (Warning) {
+              echo $hash2;
+            }
+           
+              
+          }
+          mysqli_close($conn);
+      
+        ?>
+        </div>
         <div class="sectionC-holder">
           <div class="sectionC">
           <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
@@ -58,12 +132,3 @@
     </div>
   </body>
 </html>
-
-
-<?php
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password =  $_POST["password"];
-    echo " your name is{$username} and password {$password}";
-  }
-?>

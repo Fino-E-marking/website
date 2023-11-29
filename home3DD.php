@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include("databaseCC.php");
   $username = "iliano";
   $password = "ilia1234";
@@ -51,9 +52,45 @@
     #contain .m p{
       flex: 25px;
     }
+    .profile{
+      height: 30px;
+      max-width: 400px;
+      display: flex;
+    }
+    .profile-pic{
+      height: 30px;
+      max-width: 30px;
+      border-radius: 19px;
+      flex: 20px;
+      border: solid;
+      border-width: 2px;
+      background-color: white;
+    }
+    .email-ad{
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      height: 100%;
+      flex: 1;
+      font-size: 19px;
+      padding-left: 3px;
+    }
+    .profile-zoon{
+      margin-top: 5px;
+      padding-left: 5px;
+    }
+    .name{
+      margin-bottom: 3px;
+      font-weight: bold;
+      font-size: 21px;
+      padding-left: 2px;
+
+    }
+
   </style>
 </head>
 <body>
+  <input type="file" value="choice a file">
   <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
     <div id="contain" name="body-contain">
       <div class="m">
@@ -75,12 +112,19 @@
 
     </div>
   </form>
+  <div class="profile-zoon"></div>
+    <div class="name">
+      <?php
+        echo "{$_SESSION["firstname"]} {$_SESSION["lastname"]}";
+      ?>
+    </div>
+    <div class="profile">
+      <div class="profile-pic"></div>
+      <div class="email-ad">
+        <?php
+          echo "{$_SESSION["email"]}";
+        ?>
+      </div>
+    </div>
 </body>
 </html>
-<?php
-  
-  if ($_SERVER["REQUEST_METHOTH"] == "POST") {
-    $contain1 =  $_POST["body-contain"];
-    echo $contain1;
-  }
-?>

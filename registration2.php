@@ -2,19 +2,7 @@
   session_start();
   include("databaseCC.php");
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
-    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-    
-  }
-
 ?>
-
 <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -40,29 +28,58 @@
           min-height: 480px;
           max-height: 485px;
           padding: 20px 30px 30px 20px;
-          margin-top: 50px;
+          margin-top: 0;
         
           
         }
         .body-aline{
           display: flex;
           justify-content: center;
+          flex-direction: column;
+          align-items: center;
           width: 100%;
           height: 100%;
           padding: 0;
+          margin: 0;
         
         }
-      }
-      .notis-b{
-        color: green;
+        .error{
+        color: red;
         font-size: 22px;
         text-align: center;
         font-weight: bold;
-        padding-top: 5px;
+        padding-top: 0px;
+        margin: 0px 0px 5px 0px ;
+        
+        }
         
       }
+      @media only screen and (max-width: 727px){
+        .body-holder{
+          flex: 450px;
+        }
+      
       .error{
         color: red;
+        font-size: 22px;
+        text-align: center;
+        font-weight: bold;
+        padding-top: 0px;
+        margin-top: 5px;
+        flex: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+
+      }
+      .body-aline{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+      }
+      
       }
 
           
@@ -70,49 +87,50 @@
     </style>
   </head>
   <body>
-    <div class="notis-b">
+    
+    <div class="body-aline">
     <div class="error">
       <?php
-      if (isset($_POST["login"])) {
-        if (empty($firstname) && !empty($lastname) && !empty($username) && !empty($email) && !empty($password)) {
-          echo "Please enter firstname!";
-        }
-        else if (!empty($firstname) && empty($lastname) && !empty($username) && !empty($email) && !empty($password)) {
-          echo "Please enter lastname!";
-        }
-        else if (!empty($firstname) && !empty($lastname) && empty($username) && !empty($email) && !empty($password)) {
-          echo "Please enter a username!";
-        }
-        else if (!empty($firstname) && !empty($lastname) && !empty($username) && empty($email) && !empty($password)) {
-          echo "Please enter an email!";
-        }
-        else if (!empty($firstname) && !empty($lastname) && !empty($username) && !empty($email) && empty($password)) {
-          echo "Please enter password!";
-        }else{
-          $username = $username;
-          $password = $password;
-          $email = $email;
-          $hash = password_hash($password, PASSWORD_DEFAULT);
+        if ($_SERVER["REQUEST_METHOD"] = "POST") {
+          
+          $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+          $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-          $sql = "INSERT INTO users (user, password)
-                  VALUES ('$username', '$hash')";
-          if (isset($_POST["login"])) {
-           // try {
+          if (empty($username) && empty($firstname) && empty($password) && empty($email) && empty($lastname)) {
+            echo "Please fill the form below!";
+          }else if (empty($firstname)) {
+            echo "please enter firstname";
+          }else if (empty($lastname)) {
+            echo "please enter lastname";
+          }else if (empty($username)) {
+            echo "please enter username";
+          }else if (empty($email)) {
+            echo "please enter an email";
+          }else if (empty($password)) {
+            echo "please enter a password";
+          }else {
+            $_SESSION["email"] = $email;
+            $_SESSION["firstname"] = $firstname;
+            $_SESSION["lastname"] = $lastname;
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO users (user, password)
+                    VALUES ('$username', '$hash')";
+            try {
               mysqli_query($conn, $sql);
-              
-              header("location: LOGIN2,php");
-                      echo "Register successful";    
-           // } catch (mysqli_sql_exception) {
+              header("location: LOGIN2.php");
+            } catch (mysqli_sql_exception) {
               echo "The username have been taken";
-           // }
+            }
           }
+          
         }
+        
         mysqli_close($conn);
-      }
       ?>
-      </div>
     </div>
-    <div class="body-aline">
       <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
         <div class="body-holder">
           <div class="contain-holder">
@@ -177,10 +195,7 @@
   </body>
 </html>
 
-<?php
- 
- 
-?>
+
 
 
 

@@ -159,7 +159,7 @@ h1{
     height: 180px;
     padding: 15px 20px 15px 15px;
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 25px;
   }
   .sectionC input{
     height: 23px;
@@ -186,7 +186,11 @@ h1{
 }
 @media only screen and  (min-width: 617px) {
   .contain-holder{
-    padding: 35px 18px;
+    padding: 40px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .sectionB{
     font-size: 20px;
@@ -211,17 +215,11 @@ h1{
   .sectionC{
     height: 180px;
     width: 520px;
-    margin: 33px 10px;
-  }
-  
-}
-@media only screen and  (min-width: 1100px) {
-  .contain-holder{
-    padding: 10px 0px 0px 0px;
-    max-width: 685px;
+    margin: 50px 10px;
   }
   h1{
-    font-size: 100px;
+    font-size: 80px;
+    margin-top: 50px;
   }
   .sectionA-part1 button{
     width: 70px;
@@ -234,18 +232,42 @@ h1{
     margin: 0;
   }
   .sectionA p{
-    font-size: 70px;
+    font-size: 50px;
+  }
+  
+}
+@media only screen and  (min-width: 1100px) {
+  .contain-holder{
+    padding: 10px 0px 0px 0px;
+    max-width: 685px;
+  }
+  h1{
+    font-size: 100px;
+    margin-top: 20px;
+  }
+  .sectionA-part1 button{
+    width: 70px;
+    margin: 0;
+    padding: 0;
+  }
+  .sectionA-part1 button img{
+    width: 70px;
+    padding: 0;
+    margin: 0;
+  }
+  .sectionA p{
+    font-size: 60px;
   }
   .sectionC{
     height: 215px;
     width: 544px;
-    margin: 78px 10px;
+    margin: 50px 10px;
   }
   
 }
 @media only screen and  (min-width: 1350px) {
   .sectionB{
-    font-size: 25px;
+    font-size: 20px;
   }
   
 }
