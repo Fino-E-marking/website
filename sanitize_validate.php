@@ -26,7 +26,7 @@
   if (isset($_POST["login"])) {
 
     $username = filter_input(INPUT_POST,"username",                    FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $age = filter_input(INPUT_POST,"age",                    FILTER_VALIDATE_INT);
+    $age = filter_input(INPUT_POST,"age", FILTER_VALIDATE_INT);
     $email = filter_input(INPUT_POST,"email",                    FILTER_VALIDATE_EMAIL);
 
     if (empty($email)) {

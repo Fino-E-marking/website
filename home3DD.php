@@ -1,6 +1,7 @@
 <?php
   session_start();
   include("databaseCC.php");
+  error_reporting(E_ERROR | E_PARSE);
   $username = "iliano";
   $password = "ilia1234";
   $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -12,6 +13,7 @@
   } catch (mysqli_sql_exception) {
     echo "<br>the username have been taken";
   }
+
 
   
 
@@ -74,6 +76,7 @@
       flex: 1;
       font-size: 19px;
       padding-left: 3px;
+      margin-bottom: 5px;
     }
     .profile-zoon{
       margin-top: 5px;
@@ -86,12 +89,24 @@
       padding-left: 2px;
 
     }
+    .logout{
+      margin-top: 8px;
+      padding-left: 3px;
+    }
+    #logout{
+      
+      border-color: blue;
+      border-width: 1px;
+      color: blue;
+      border-radius: 4px;
+      padding: 8px;
+      background-color: white;
+    }
 
   </style>
 </head>
 <body>
   <input type="file" value="choice a file">
-  <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
     <div id="contain" name="body-contain">
       <div class="m">
         <img src="icons/dano 2.jpg" alt="dano milk">
@@ -111,7 +126,6 @@
       </div>
 
     </div>
-  </form>
   <div class="profile-zoon"></div>
     <div class="name">
       <?php
@@ -126,5 +140,16 @@
         ?>
       </div>
     </div>
+    <div class="logout">
+      <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>">
+       <input type="submit" value="logout" name="logout" id="logout">
+      </form>
+    </div>
 </body>
 </html>
+
+<?php
+  if ($_SERVER["REGUEST_METHOD"] = "POST") {
+    
+  }
+?>
