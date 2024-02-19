@@ -1,7 +1,7 @@
 <?php
   session_start();
   include("databaseCC.php");
-  error_reporting(E_ERROR | E_PARSE)
+  error_reporting(ERRO / PASTE);
 ?>
 <!DOCTYPE html>
 <html lang="en">
