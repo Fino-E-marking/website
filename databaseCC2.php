@@ -1,7 +1,7 @@
 
 <?php
 
-  $db_server = "fino server";
+/*  $db_server = "fino server";
   $db_user = "root";
   $db_pass = "676742528";
   $db_name = "e_provision"; 
@@ -14,4 +14,4 @@ echo "connected";
   echo"can't connect to site";
  } 
   
-?>
+?>*/
