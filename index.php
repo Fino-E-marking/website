@@ -24,7 +24,6 @@ if (isset($_POST["submit"])) {
     $num = $_POST["NUM"];
     $total = null;
     
-
     $total1 = filter_input(INPUT_POST, "NUM", FILTER_SANITIZE_STRING);
     $include_num = filter_input(INPUT_POST, "NUM", FILTER_SANITIZE_NUMBER_INT);
     echo $total1 . "<br>" . "<br>" . "<br>";
