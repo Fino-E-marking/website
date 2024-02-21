@@ -11,7 +11,7 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="index.php" method="post">
+  <form action="allpass_check.php" method="post">
     <p>qantity</p><br>
     <input type="text" id="NUM" name="NUM"><br>
     <input type="radio" name="title" id="title1" value="Mr">
@@ -23,14 +23,14 @@
     <input type="radio" name="title" id="title4" value="Doc">
     <label for="title4">Doc</label><br>
 
-    <button type="submit" value="total" name="submit">total</button>
+    <button type="submit" value="total" name="login">total</button>
   </form>
 </body>
 </html>
 
 
 <?php 
-if (isset($_POST["submit"])) {
+if (isset($_POST["login"])) {
     $num = $_POST["NUM"];
     $total = null;
     
@@ -38,8 +38,13 @@ if (isset($_POST["submit"])) {
     $include_num = filter_input(INPUT_POST, "NUM", FILTER_SANITIZE_NUMBER_INT);
     echo $total1 . "<br>" . "<br>" . "<br>";
     
-    
-    if (strlen($total1) >= 8 ) {
+    $removespace = str_replace(" ", "_", $total1);
+     if ($removespace) {
+      echo "space removed sucessfull" . "<br>";
+      echo $removespace . "<br>";
+     }
+     echo $removespace;
+    /*if (strlen($total1) >= 8 ) {
       //echo "you are login";
       function isPartUppercase($total1, $include_num) {
         if(preg_match("/[A-Z]/", $total1)===0) {
@@ -78,12 +83,12 @@ if (isset($_POST["submit"])) {
           ispartlowercase($total1, $include_num);
         }
       }
-      isPartUppercase($total1, $include_num);
+      isPartUppercase($total1, $include_num); 
     }elseif (isset($num) && strlen($total1) < 8 && !empty($num) && isset($_POST["submit"])) {
       echo "your password most be atleast 8 digit that <br> 
             include uppercase , lowercase , digits and <br>
             special characters.";
-    }
+    }  */
 
  }
 
@@ -92,6 +97,6 @@ if (isset($_POST["NUM"])) {
     $title = $_POST["title"];
     echo $title;
   }
-}
+} 
 
 ?>

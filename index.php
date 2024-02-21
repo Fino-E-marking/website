@@ -8,12 +8,12 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $first_name = filter_input(INPUT_POST, "First_name", FILTER_SANITIZE_STRING);
-  $Last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+  $Last_name = filter_input(INPUT_POST, "Last_name", FILTER_SANITIZE_STRING);
   $user_name = filter_input(INPUT_POST, "user_name", FILTER_SANITIZE_STRING);
   $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
   $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+  echo $password . "<br>";
    
-  $hash = password_hash($password, PASSWORD_DEFAULT);
   if (isset($_POST["submit"])) {
     if (empty($_POST["First_name"]) && empty($_POST["Last_name"]) &&
         empty($_POST["user_name"]) && empty($_POST["email"]) &&
@@ -31,38 +31,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "please enter a password";
     }else{
       if (!empty($_POST["password"])) {
-        function passwordintr($password){
-          $total1 = $password;
-          $include_num = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);
           
-          if (strlen($total1) >= 8 ) {
+          if (strlen($password) >= 8 ) {
             //echo "you are login";
-            function isPartUppercase($total1, $include_num) {
-              if(preg_match("/[A-Z]/", $total1)===0) {
+            function isPartUppercase($password, $conn) {
+              if(preg_match("/[A-Z]/", $password)===0) {
                 echo "your password most include at least one uppercase letter";
               }else{
-                function ispartlowercase($total1, $include_num){
-                  if(preg_match("/[a-z]/", $total1)===0) {
+                function ispartlowercase($password, $conn){
+                  $include_num = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);
+                  if(preg_match("/[a-z]/", $password)===0) {
                     echo "your password most include at least one lowercase letter";
                   }else{
-                    if (strlen($total1) != strlen($include_num)) {
-                      $number = filter_input(INPUT_POST, "NUM", FILTER_SANITIZE_NUMBER_INT);  
+                    if (strlen($password) != strlen($include_num)) {
+                      $number = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);  
                       if (strlen($number)) {
-                        function ispartpuntuation($total1){
+                        function ispartpuntuation($password, $conn){
+                          $first_name = filter_input(INPUT_POST, "First_name", FILTER_SANITIZE_STRING);
+                          $Last_name = filter_input(INPUT_POST, "Last_name", FILTER_SANITIZE_STRING);
+                          $user_name = filter_input(INPUT_POST, "user_name", FILTER_SANITIZE_STRING);
+                          $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+                          $hash = password_hash($password, PASSWORD_DEFAULT);
+                          $user_name_spaceremoved = str_replace(" ", "_", $user_name);
                           $include =  array("!", "@","#","$","%","&");
-                          if(preg_match("/[{$include}]/", $total1)===0) {
-                            echo "your password most atleast special character";
-                          }else{
-                            echo "you are login" . "<br>";
-                            $check = 0;
-                            $check2 = null;
-                            if (isset($_POST["submit"])) {
-                              $check ++;
+                          //if(preg_match("/[{$include}]/", $password)===0) {
+                          //  echo "your password most atleast special character";
+                         // }else{
+                            
+                            //$sql = "INSERT INTO users_infor (First_name, Last_name, user_name, email, password)
+                           // VALUES ('$first_name', '$Last_name', '$user_name_spaceremoved', '$email', '$hash') ";
+                            $sql = "UPDATE users_infor 
+                                    SET Last_name = '$Last_name',
+                                       password = '$hash'
+                                    WHERE user_name = '$user_name'";
+                            try {
+                              mysqli_query($conn, $sql);
+                            } catch (mysqli_sql_exception) {
+                              echo "The username have been taken";
                             }
-                            echo $check . "<br>";
-                          }  
+                         // }  
                         }
-                        ispartpuntuation($total1);
+                        ispartpuntuation( $password, $conn);
                       }else {
                         echo "your password most include atleast one number";
                       } 
@@ -71,19 +80,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                   }
                 }
-                ispartlowercase($total1, $include_num);
+                ispartlowercase($password,$conn);
               }
             }
-            isPartUppercase($total1, $include_num);
-          }elseif (isset($num) && strlen($total1) < 8 && !empty($num) && isset($_POST["submit"])) {
+            isPartUppercase($password, $conn);
+          }elseif (isset($_POST["NUM"]) && strlen($password) < 8 && !empty($_POST["NUM"]) && isset($_POST["submit"])) {
             echo "your password most be atleast 8 digit that <br> 
                   include uppercase , lowercase , digits and <br>
                   special characters.";
           }
-        }
       }
 
-      
     }
   }
 
@@ -118,7 +125,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="test"><?php "<br>";?></div><br>
     <label for="password">password:</label>
     <input type="password" name="password" id="password" placeholder="enter a password"><br>
-    <div class="test"><?php passwordintr($password) . "<br>";?></div><br>
+    <div class="test"><?php if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     // $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+     // $total1 = $password;
+      //$include_num = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);
+      //passwordintr($password);
+    }?></div><br>
 
     <button type="submit"  name="submit">register</button>
   </form>
