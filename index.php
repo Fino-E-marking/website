@@ -62,20 +62,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             echo mysqli_connect_error();
                             exit;
                           }
+                          $sql = "INSERT INTO users_infor (First_name, Last_name, user_name, email, password)
+                          VALUES (?,?,?,?,?) ";
+                          $stmt = $conn->prepare($sql);
+                          $stmt->bind_param("sssss", $first_name, $Last_name, $user_name_spaceremoved, $email, $hash );
+
+                          $first_name = filter_input(INPUT_POST, "First_name", FILTER_SANITIZE_STRING);
+                          $Last_name = filter_input(INPUT_POST, "Last_name", FILTER_SANITIZE_STRING);
+                          $user_name = filter_input(INPUT_POST, "user_name", FILTER_SANITIZE_STRING);
+                          $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+                          $hash = password_hash($password, PASSWORD_DEFAULT);
+                          $user_name_spaceremoved = str_replace(" ", "_", $user_name);
+                          
+                          $stmt->execute();
+                          $stmt->close();
+                            
+
+
                             //$sql = "INSERT INTO users_infor (First_name, Last_name, user_name, email, password)
                            // VALUES ('$first_name', '$Last_name', '$user_name_spaceremoved', '$email', '$hash') ";
                            
-                            $sql = "UPDATE users_infor 
-                                    SET Last_name = '$Last_name',
-                                    password = '$hash'
-                                    WHERE user_name = '$user_name'";
-                            try {
-                              mysqli_query($conn, $sql);
+                          //  $sql = "UPDATE users_infor 
+                           //         SET Last_name = '$Last_name',
+                          //          password = '$hash'
+                           //         WHERE user_name = '$user_name'";
+                          //  try {
+                          //    mysqli_query($conn, $sql);
                             // echo "you are now registered" . "<br>";
                             // echo "update was sucessfull" . "<br>";
-                            } catch (mysqli_sql_exception) {
-                              echo "The username have been taken";
-                            }
+                          //  } catch (mysqli_sql_exception) {
+                           //   echo "The username have been taken";
+                          //  }
                          // }  
                         }
                         ispartpuntuation( $password, $conn);
