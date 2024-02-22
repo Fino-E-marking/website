@@ -58,14 +58,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           //  echo "your password most atleast special character";
                          // }else{
                             
+                          if (mysqli_connect_error()) {
+                            echo mysqli_connect_error();
+                            exit;
+                          }
                             //$sql = "INSERT INTO users_infor (First_name, Last_name, user_name, email, password)
                            // VALUES ('$first_name', '$Last_name', '$user_name_spaceremoved', '$email', '$hash') ";
+                           
                             $sql = "UPDATE users_infor 
                                     SET Last_name = '$Last_name',
-                                       password = '$hash'
+                                    password = '$hash'
                                     WHERE user_name = '$user_name'";
                             try {
                               mysqli_query($conn, $sql);
+                            // echo "you are now registered" . "<br>";
+                            // echo "update was sucessfull" . "<br>";
                             } catch (mysqli_sql_exception) {
                               echo "The username have been taken";
                             }
@@ -101,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Register page</title>
   <style>
     .test{
       padding-left: 100px;
