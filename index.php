@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           //if(preg_match("/[{$include}]/", $password)===0) {
                           //  echo "your password most atleast special character";
                          // }else{
-                            
+                         /*   
                           if (mysqli_connect_error()) {
                             echo mysqli_connect_error();
                             exit;
@@ -73,6 +73,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
                           $hash = password_hash($password, PASSWORD_DEFAULT);
                           $user_name_spaceremoved = str_replace(" ", "_", $user_name);
+                          
+                          $stmt->execute();
+                          $stmt->close();
+                          */
+
+                          if (mysqli_connect_error()) {
+                            echo mysqli_connect_error();
+                            exit;
+                          }
+                           $sql = "UPDATE users_infor 
+                                  SET Last_name = ?,
+                                  email = ?
+                                  WHERE user_name = ?";
+                          $stmt = $conn->prepare($sql);
+                          $stmt->bind_param("sss", $Last_name,  $email, $user_name_spaceremoved );
+
+                          $Last_name = filter_input(INPUT_POST, "Last_name", FILTER_SANITIZE_STRING);
+                          $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+                          $user_name_spaceremoved = str_replace(" ", "_", $user_name);
+                        
                           
                           $stmt->execute();
                           $stmt->close();
