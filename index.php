@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           //if(preg_match("/[{$include}]/", $password)===0) {
                           //  echo "your password most atleast special character";
                          // }else{
-                         /*   
+                           
                           if (mysqli_connect_error()) {
                             echo mysqli_connect_error();
                             exit;
@@ -76,8 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           
                           $stmt->execute();
                           $stmt->close();
-                          */
-
+                          
+                      /*
                           if (mysqli_connect_error()) {
                             echo mysqli_connect_error();
                             exit;
@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           $stmt->execute();
                           $stmt->close();
                             
-
+                      */
 
                             //$sql = "INSERT INTO users_infor (First_name, Last_name, user_name, email, password)
                            // VALUES ('$first_name', '$Last_name', '$user_name_spaceremoved', '$email', '$hash') ";
