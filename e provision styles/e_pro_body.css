@@ -1,0 +1,153 @@
+.body-first-holder{
+  background-color: transparent;
+}
+.body-holder{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(194px, 1fr));
+  grid-gap: 2px;
+  border: solid 2px rgb(41, 41, 41);
+  max-width: 1370px;
+}
+body{
+  background-color: rgb(78, 77, 77);
+  touch-action: pan-y ;
+
+}
+.main{
+  background-color: rgb(245, 244, 244);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-family: arial;
+}
+.product-quantity{
+  display: flex;
+  width: 50px;
+}
+#quantity{
+  width: 40px;
+  height: 15px;
+}
+#quantity::placeholder{
+  color: black;
+}
+.product-price{
+  display: flex;
+}
+.product-name{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+.main-contian-holder{
+  display: grid;
+  grid-template-columns: 190px;
+  grid-template-rows: 142px 40px 30px 25px 25px 20px 20px 30px ;
+}
+
+.product-image{
+  width: 100%;
+  height: 100%;
+}
+.product-price{
+  font-weight: bold;
+}
+.product-price,.product-quantity,.product-description,.product-rating{
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  justify-content: start;
+}
+.rate-point{
+  flex: 1;
+  text-align: start;
+  color: green;
+  margin-bottom: 2px;
+}
+.display-message{
+  font-weight: bold;
+  font-size: 18px;
+  color: green;
+  display: flex;
+  justify-content: center;
+}
+.checked{
+  color: orange;
+}
+.half-checked{
+  color:color-mix(in bold shorter black, orange 50%, red 50%) ;
+}
+
+.mamn{
+  background-color: green;
+  border-radius: 50%;
+  padding: 2px;
+  border: solid 2px;
+  display: flex;
+  align-items: center;
+}  
+.dms-hide{
+  display: none;
+}
+.vx2{
+  color: white;
+}
+
+.add-to-cart-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-to-cart-button button{
+  background-color: rgb(255, 187, 0);
+  font-weight: bold;
+  padding: 5px 50px ;
+  border: none;
+  border-radius: 20px;
+}
+
+.rating-star-image{
+  width: 90px;
+  height: 70%;
+}
+
+.srh-hide{
+  display: none;
+}
+::-webkit-scrollbar{
+  display: none;
+}
+
+.hind-option{
+  display: none;
+}
+
+@media only screen and (min-width: 390px) {
+  .Danopowdermilk800g001hide{
+    display: none;
+  }
+}
+@media only screen and (min-width: 588px) {
+  .Danopowdermilk800g001hide{
+    display: block;
+  }
+}
+@media only screen and (min-width: 784px) {
+  .Danopowdermilk800g001hide,.Nido400g001hide,.azursavoncartonjpegg001hide{
+    display: none;
+  }
+}
+@media only screen and (min-width: 980px) {
+  .Nido400g001hide,.azursavoncartonjpegg001hide{
+    display: block;
+  }
+}
+@media only screen and (min-width: 1176px) {
+  .Nido400g001hide,.azursavoncartonjpegg001hide{
+    display: none;
+  }
+}

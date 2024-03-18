@@ -1,0 +1,328 @@
+body{
+  padding-top: 81px;
+  max-width: 1366px;
+}
+.product-image{
+  width: 70px;
+  height: 37px;
+  margin-bottom: 2px;
+}
+.checkout-body{
+  display: grid;
+  max-width: 950px;
+  grid-template-columns: minmax(400px, 900px) ;
+  grid-auto-rows: minmax(30px, auto);
+  padding: 10px;
+  position: relative;
+}
+.list-header,.list-body{
+  display: grid;
+  grid-template-columns: 80px 2fr 1fr 90px 1fr 1fr 90px;
+  align-items: center;
+  justify-items: center;
+  border: solid 2px;
+  background-color: black;
+  column-gap: 2px;
+}
+.list-body{
+  grid-auto-rows: minmax(40px, 40px);
+  row-gap: 2px;
+  border-top: 0 ;
+}
+.list-header .chk-l-h,.chk-l-b{
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  font-size: 19px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chk-b-product-name{
+  justify-content: start;
+  padding-left: 1px;
+
+}
+.chk-l-b{
+  font-size: 17px;
+}
+.chk-option{
+  display: flex;
+  flex-direction: column;
+}
+.chk-option button{
+  width: 100%;
+  border: solid 1px;
+  
+}
+.chk-delete-btn{
+  background-color: rgb(121, 4, 4);
+  color: white;
+  padding: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.04s ease;
+}
+.chk-delete-btn:hover{
+  opacity: 0.8;
+}
+.chk-delete-btn:focus{
+  opacity: 0.7;
+}
+.chk-update-btn{
+  background-color: white;
+  color: green;
+  padding: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.04s ease;
+}
+.chk-update-btn:hover{
+  background-color: green;
+  color: white;
+}
+
+
+.order-summary{
+  background-color: rgb(241, 239, 239);
+  height: 145px;
+  width: 280px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 270px;
+  grid-template-rows: 30px 2px 80px 1px 30px;
+  border: solid 2px;
+  position: absolute;
+  right: -300px;
+  top: 15px;
+}
+.summary-header{
+  font-size: 21px;
+  text-align: center;
+  font-weight: bold;
+}
+.total-chck-price,.items-chk-holder{
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  margin-top: 3px;
+  font-weight: bold;
+  color: rgb(70, 69, 69);
+}
+.total-chck-price{
+  color: rgb(177, 5, 5);
+  font-size: 19px;
+}
+.order-submit-holder{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  align-items: center;
+}
+.Submit-cart{
+  background-color: rgb(247, 122, 5);
+  padding: 5px 60px;
+  font-weight: bold;
+  border: solid 1px;
+  margin-left: 15px;
+  border-radius: 3px;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.hide-checkout-body{
+  display: none;
+}
+#mobile001-776{
+  display: none;
+}
+
+
+@media only screen and (max-width: 1272px) {
+  .order-summary{
+    right: -250px;
+    top: 15px;
+  }
+}
+@media only screen and (max-width: 1222px) {
+  .order-summary{
+    right: 40%;
+    bottom:-200px;
+    top: 100%;
+  }
+}
+.chk-l-h-mobile1,.zte{
+  display: none;
+}
+@media only screen and (max-width: 776px) {
+  #desktop-778{
+    display: none;
+  }
+  #mobile001-776{
+    display: block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  .list-header,.list-body{
+    grid-template-columns: 80px 2fr 1fr 70px 1fr 1fr 90px;
+  
+  }
+}
+@media only screen and (max-width: 669px) {
+
+  .list-header,.list-body{
+    grid-template-columns: 73px 2fr 1fr 50px 1fr 1fr 70px;
+  
+  }
+}
+@media only screen and (max-width: 622px) {
+
+  .list-header,.list-body{
+    grid-template-columns: 73px 2fr 1fr 50px 1fr 1fr 70px;
+  }
+  #mobile001-776,#zw,#chl-product-image{
+    font-size: 16px;
+  }
+  .chk-update-btn,.chk-delete-btn{
+    font-size: 12px;
+  }
+  .chk-l-b{
+    font-size: 14px;
+  }
+  .product-image{
+    width: 70px;
+    height: 37px;
+    margin-bottom: 2px;
+  }
+}
+@media only screen and (max-width: 557px) {
+
+  .list-header,.list-body{
+    grid-template-columns: 50px 2fr 1fr 50px 1fr 1fr 50px;
+  }
+  #mobile001-776,#zw,#chl-product-image{
+    font-size: 14px;
+  }
+  .chk-update-btn,.chk-delete-btn{
+    font-size: 10px;
+  }
+  .chk-l-b{
+    font-size: 13px;
+  }
+  .product-image{
+    width: 45px;
+    height: 37px;
+    margin-bottom: 1px;
+  }
+  .order-summary{
+    right: 30px;
+    bottom:-200px;
+    top: 100%;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  #chl-product-image6,.chl-product-image1,.product-image{
+    width: 40px;
+  }
+  .list-header,.list-body{
+    grid-template-columns: 50px 100px 60px 40px 60px 60px 50px;
+  }
+  .list-body{
+    grid-auto-rows: minmax(30px, 50px);
+    row-gap: 2px;
+    border-top: 0 ;
+  }
+  .checkout-body{
+    padding: 2px;
+    max-width: 436px;
+  }
+  .order-summary{
+    right: 30px;
+    bottom:-200px;
+    top: 102%;
+  }
+}
+@media only screen and (max-width: 445px) {
+  #chl-product-image6,.chl-product-image1,.product-image{
+    width: 0px;
+    font-size: -9999px;
+  }
+  .list-header,.list-body{
+    grid-template-columns: 0px 1fr 60px 40px 60px 60px 40px;
+  }
+  .checkout-body{
+    padding: 2px;
+    max-width: 400px;
+    margin-right: 2px;
+  }
+  body{
+    padding: 81px 3px 3px 3px;
+  }
+}
+@media only screen and (max-width: 416px) {
+  #chl-product-image6,.chl-product-image1,.product-image{
+    width: 0px;
+    font-size: -9999px;
+  }
+  .list-header,.list-body{
+    grid-template-columns: 0px 110px 70px 40px 49px 55px 55px;
+    width: 10;
+  }
+  .checkout-body{
+    padding: 5px 2px 5px 1px;
+    max-width: 300px;
+  }
+  body{
+    padding: 81px 3px 190px 3px;
+  }
+  .order-summary{
+    right: -70px;
+    bottom:-200px;
+    top: 102%;
+  }
+}
+
+
+
+.chk-l-quty{
+  position: relative;
+}
+.quantity-update-holder{
+  width: 142px;
+  background-color: black;
+  color: white;
+  padding: 5px 7px;
+  margin-left: 10px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -50px;
+  z-index: 1;
+}
+.quantity-update-holder{
+  font-weight: bold;
+  
+}
+.quantity-update-holder #update-quantity{
+  max-width: 50px;
+  border: solid 2px gray;
+  padding-left: 3px;
+  border-radius: 3px;
+}
+.confirm-button{
+  padding: 2px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin-left: 3px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+.hide-update{
+  display: none;
+}

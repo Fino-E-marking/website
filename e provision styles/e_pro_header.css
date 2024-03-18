@@ -1,0 +1,251 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  padding-top: 91px;
+  max-width: 1366px;
+}
+.header{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 40px;
+  background-color: rgb(34, 33, 32);
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.h-section-a,.header-option{
+  display: flex;
+}
+.profile-image{
+  width: 40px;
+  margin-right: 5px;
+  border-radius: 4px;
+
+}
+.title-holder{
+  flex: 4;
+  display: flex;
+  align-items: center;
+  font-size: 33px;
+  font-weight: bold;
+  padding-left: 5%;
+}
+
+.header-option{
+  flex: 1;
+  font-size: 19px;
+  justify-content: end;
+  margin-right: 20px;
+  
+}
+.h-optn{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 2px 5px ;
+  font-weight: bold;
+}
+.h-optn a{
+  text-decoration: none;
+  color: blue;
+  margin-top: 3px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background-color: blanchedalmond;
+}
+.h-section-b{
+  display: flex;
+  justify-content: center;
+}
+.first-search-box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  zoom: none;
+}
+.first-search-box:focus,.search-box-holder:focus{
+  zoom: none;
+}
+.search-box-holder{
+  flex: 1;
+  max-width: 600px;
+  height: 25px;
+  padding: 0px 10px;
+  width: 100%;
+  zoom: none;
+}
+#search-bar{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  padding-left: 15px;
+  border: solid 2px rgb(243, 174, 174);
+  background-color: rgb(228, 225, 225);
+  flex: 1;
+}
+
+.title-holder .search-box-holder{
+  flex: 1;
+  margin-bottom: 20px;
+}
+.second-search-box{
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 20px;
+  display: none;
+  
+}
+
+
+.h-mobile{
+  display: none;
+}
+.font-color{
+  color: rgb(203, 202, 206);
+}
+.dropdown-holder{
+  background-color: transparent;
+  height: 20px;
+  width: 20px;
+  color: white;
+  position: relative;
+  margin-top: 10px;
+}
+.dropdown{
+  width: 120px;
+  background-color: rgb(189, 187, 187);
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -60px;
+  right: 0px;
+  border: solid 1px black;
+}
+.dropdown ul{
+  list-style: none;
+  width: 100%;
+  flex: 1;
+}
+.dropdown ul li{
+  text-decoration: none;
+  width: 100%;
+  border-radius: 3px;
+}
+.dropdown ul li:hover{
+  background-color: blue;
+  color: white;
+}
+.dropdown ul li a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  
+}
+.dropdown ul li a:hover{
+  color: white;
+  width: 100%;
+}
+.optn-fn{
+  width: 20px;
+  padding-left: 4px;
+  color: black;
+}
+.optn-fn:hover{
+  color: white;
+}
+hr{
+  border: solid 1px black;
+  margin: 1px 0px;
+}
+.hide-dropdown{
+  display: none;
+}
+
+.cart-holder{
+  position: relative;
+}
+.cart-notis{
+  font-family: arial;
+  position: absolute;
+  background-color: red;
+  font-size: 12px;
+  padding: 3px;
+  height: 12px;
+  min-width: 12px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  right: -5px;
+}
+@media only screen and (min-width: 1090px) {
+  .second-search-box{
+    display: block;
+  }
+  .first-search-box{
+    display: none;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  .second-search-box{
+    padding-left: 10%;
+  }
+}
+@media only screen and (max-width: 484px) {
+  .title-holder{
+    flex: 6;
+    font-size: 30px;
+    padding-left: 3%;
+  }
+  .h-optn a{
+    margin-top: 3px;
+    padding: 1px 7px;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  .profile-image{
+    width: 35px;
+  } 
+  .search-box-holder{
+    height: 22px;
+    padding: 0px 30px;
+    
+  }
+}
+@media only screen and (max-width: 420px) {
+  .h-optn{
+    justify-content: end;
+    align-items: start;
+    padding: 2px 2px ;
+  }
+}
+@media only screen and (max-width: 405px) {
+  .h-mobile{
+    display: block;
+  }
+  .h-desktop{
+    display: none;
+  }
+}
+@media only screen and (max-width: 307px) {
+  .title-holder{
+    font-size: 25px;
+    padding-left: 3%;
+  }
+  .profile-image{
+    width: 30px;
+  }
+}

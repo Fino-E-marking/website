@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Email</title>
+  <script src="send_email.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () {
+     emailjs.init("8l9TAipt8UiNLWqzx"); 
+    })();
+  </script>
+  
+</head>
+<body>
+  <label for="name">NAME:</label> <br>
+  <input type="text" placeholder="enter name" id="name"> <br>
+  <label for="email">EMAIL:</label><br>
+  <input type="email" placeholder="enter email" id="email"><br>
+  <label for="phone_num">TEL:</label><br>
+  <input type="text" id="phone_num" placeholder="enter phone number"><br>
+  <label for="num_item">Number of item:</label><br>
+  <input type="number" id="num_item" min="1"><br>
+  <label for="amount">Amount:</label><br>
+  <input type="text" id="amount" placeholder="amount"><br>
+  <button onclick="sendemail()" >send email</button> <br>
+  <p id="condition">Payed</p>
+  <p class="reply_to">THANKS FOR SHOPING AT EPROVISION</p>
+</body>
+</html>
