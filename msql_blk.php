@@ -87,6 +87,8 @@
     <input type="text" name="username" id="username" placeholder="enter username"><br>
     <label for="username">Password:</label>
     <input type="password" name="password" id="password" placeholder="enter password"><br>
+    <a href="change_password.php">forgot password</a><br>
+    <a href="index.php">create an acount</a>
     <button type="submit" name="submit" id="submit">commet</button>
     <div>
       <?php echo $msg; ?>

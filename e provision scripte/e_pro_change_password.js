@@ -8,6 +8,9 @@ const openeyeB = document.querySelector(".eyeiconB1")
 const eyeholderB = document.querySelector(".holderB")
 const lockpasswordB = document.querySelector(".passclose2")
 const unlockpasswordB = document.querySelector(".passopen2")
+const resultpass1 = document.querySelector(".resultpassword")
+const resultpass2 = document.querySelector(".resultpassword2")
+const submit = document.querySelector(".submit")
 /*
 if (lockpassword.value !== " " && unlockpassword.value !== " ") {
   lockpassword.addEventListener("input", ()=>{
@@ -75,4 +78,23 @@ eyeholderB.addEventListener("click", ()=>{
     lockpasswordB.value = unlockpasswordB.value;
   }
 });
-console.log(eyeholderB);
+
+submit.addEventListener("mouseenter", assigningpass)
+assigningpass()
+function assigningpass() {
+  if (!openeye.classList.contains("hide-icon")) {
+    resultpass1.value = unlockpassword.value;
+  }else{
+    resultpass1.value = lockpassword.value;
+  }
+  
+  if (!openeyeB.classList.contains("hide-icon")) {
+    resultpass2.value = unlockpasswordB.value;
+  }else{
+    resultpass2.value = lockpasswordB.value;
+  }
+  
+}
+
+
+
