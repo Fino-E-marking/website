@@ -1,10 +1,149 @@
 <?php
   include("databaseCC.php");
-  //error_reporting(E_ERROR | E_PARSE);
-  $msgs = "";
+  error_reporting(E_ERROR | E_PARSE);
+ 
+?>
+
+
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="e provision styles/e_pro_change_password.css">
+    <title>Change password</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }.eyeicon,.iconB{
+        width: 100%;
+        height: 18px;
+        border: none;
+      }
+      .eyeicon1,.iconB1{
+        width: 100%;
+        height: 18px;
+        border: none;
+      }
+
+      .icon-holder,.holderB{
+        width: 20px;
+        height: 13px;
+        border: solid;
+        background-color: red;
+      }
+      .hinden-input-holder1,.hinden-input-holder2{
+        margin-bottom: 0px;
+      }
+      body{
+        background-image:url(all-icon/background.jpg);
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: transparent;
+      }
+      .formholder{
+        border: solid;
+        border-width: 1px;
+        width: 350px;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+      }
+      .hinden-input,.hinden-input2{
+        width: 100%;
+        background-color: transparent;
+      }
+      .name-holder{
+        width: 100%;
+      }
+      #username{
+        width: 100%;
+      }
+      .hinden-input,.hinden-input2,#username{
+        height: 22px;
+        margin-bottom: 10px;
+      }
+      ::placeholder{
+        padding-left: 5px;
+      }
+      .submit-holder{
+        height: 25px;
+        display: flex;
+        justify-content: center;
+      }
+      #submit{
+        height: 100%;
+        min-width: 90%;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-weight: bold;
+
+      }
+      .main-holder{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-holder">
+      <div>
+        <?php echo $msgs . "<br>"; ?>
+      </div>
+      <form class="formholder" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+        <div class="name-holder">
+          <label for="username">Username:</label><br>
+          <input type="text" name="username" id="username" placeholder="enter username">
+        </div>
+        <div class="hinden-input-holder1">
+          <label for="old-password">New Password:</label>
+          <div class="hinden-input">
+            <input type="text" placeholder="enter password" name="old-password2" id="old-password2" class="passopen hide-icon">
+            <input type="password" placeholder="enter password" name="older-password" id="old-password" class="passclose">
+            <div class="icon-holder">
+              <img class="eyeicon" src="icons/eye icon.png" alt="icon">
+              <img class="eyeicon1 hide-icon" src="icons/close eye icon.png" alt="icon">
+            </div>
+          </div> 
+        </div>
+        <div class="hinden-input-holder2">
+          <label for="new-password">Confirm Password:</label>
+          <div class="hinden-input2">
+            <input type="text" placeholder="enter password" name="new-password2B" id="new-password2B" class="passopen2 hide-icon">
+            <input type="password" placeholder="enter password" name="older-passwordB" id="new-passwordB" class="passclose2">
+            <div class="icon-holderB holderB">
+              <img class="eyeiconB iconB" src="icons/eye icon.png" alt="icon">
+              <img class="eyeiconB1 iconB1 hide-icon" src="icons/close eye icon.png" alt="icon">
+            </div>
+          </div>
+        </div>
+        <div class="submit-holder">
+          <button type="submit" name="submit" id="submit" class="submit">apply change</button>
+        </div>
+        <input type="text" class="resultpassword hide-icon" name="resultpassword" id="resultpassword">
+        <input type="text" class="resultpassword2 hide-icon" name="resultpassword2" id="resultpassword2">
+      </div>
+    </form>
+    <script src="e provision scripte/e_pro_change_password.js"></script>
+  </body>
+</html>
+
+<?php
+  mysqli_close($conn);
 ?>
 
 <?php 
+   $msgs = "";
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["submit"])) {
       $password1 = $_POST["resultpassword"];
@@ -89,59 +228,4 @@
 ?>
 
 
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="e provision styles/e_pro_change_password.css">
-    <title>Change password</title>
-  </head>
-  <body>
-    <div class="main-holder">
-      <div>
-        <?php echo $msgs . "<br>"; ?>
-      </div>
-      <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <div class="name-holder">
-          <label for="username">Username:</label><br>
-          <input type="text" name="username" id="username" placeholder="enter username">
-        </div>
-        <div class="hinden-input-holder1">
-          <label for="old-password">New Password:</label>
-          <div class="hinden-input">
-            <input type="text" placeholder="enter password" name="old-password2" id="old-password2" class="passopen hide-icon">
-            <input type="password" placeholder="enter password" name="older-password" id="old-password" class="passclose">
-            <div class="icon-holder">
-              <img class="eyeicon" src="icons/eye icon.png" alt="icon">
-              <img class="eyeicon1 hide-icon" src="icons/close eye icon.png" alt="icon">
-            </div>
-          </div> 
-        </div>
-        <div class="hinden-input-holder2">
-          <label for="new-password">Confirm Password:</label>
-          <div class="hinden-input2">
-            <input type="text" placeholder="enter password" name="new-password2B" id="new-password2B" class="passopen2 hide-icon">
-            <input type="password" placeholder="enter password" name="older-passwordB" id="new-passwordB" class="passclose2">
-            <div class="icon-holderB holderB">
-              <img class="eyeiconB iconB" src="icons/eye icon.png" alt="icon">
-              <img class="eyeiconB1 iconB1 hide-icon" src="icons/close eye icon.png" alt="icon">
-            </div>
-          </div>
-        </div>
-        <div class="submit-holder">
-          <button type="submit" name="submit" id="submit" class="submit">apply change</button>
-        </div>
-        <input type="text" class="resultpassword hide-icon" name="resultpassword" id="resultpassword">
-        <input type="text" class="resultpassword2 hide-icon" name="resultpassword2" id="resultpassword2">
-      </div>
-    </form>
-    <script src="e provision scripte/e_pro_change_password.js"></script>
-  </body>
-</html>
-
-<?php
-  mysqli_close($conn);
-?>
 
