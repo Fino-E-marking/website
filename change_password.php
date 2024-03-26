@@ -1,9 +1,91 @@
 <?php
   include("databaseCC.php");
-  error_reporting(E_ERROR | E_PARSE);
+  //error_reporting(E_ERROR | E_PARSE);
+  $msgs = "";
  
 ?>
 
+<?php 
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["submit"])) {
+      $password1 = $_POST["resultpassword"];
+      $password2 = $_POST["resultpassword2"];
+      $username = $_POST["username"];
+
+      if (empty($username)) {
+        $msgs = "Please enter a 'username'";
+      }elseif (empty($password1)) {
+        $msgs = "Please enter a 'new password'";
+      }elseif (empty($password2)) {
+        $msgs = "Please enter a 'confirm password'.";
+      }elseif (!empty($password1) && !empty($password2) && !empty($username)) {
+        if ($password1 == $password2) {
+          $password = filter_input(INPUT_POST,"resultpassword2", FILTER_SANITIZE_STRING);
+          if (strlen($password) >= 8 ) {
+            //echo "you are login";
+            
+              if(preg_match("/[A-Z]/", $password)===0) {
+                $msgs = "your password most include at least one uppercase letter";
+              }else{
+                
+                  $include_num = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);
+                  if(preg_match("/[a-z]/", $password)===0) {
+                    $msgs = "your password most include at least one lowercase letter";
+                  }else{
+                    if (strlen($password) !== strlen($include_num)) {
+                      $number = filter_input(INPUT_POST, "resultpassword2", FILTER_SANITIZE_NUMBER_INT);  
+                      if (strlen($number)) {      
+                        $user_name = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+                        $user_name_spaceremoved = str_replace(" ","_", $user_name);
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
+                        
+                        if (mysqli_connect_error()) {
+                          $msgs = mysqli_connect_error();
+                          exit;
+                        }
+                        try{
+                          $sql = "UPDATE users_infor 
+                                  SET password = ?
+                                  WHERE user_name = '$user_name_spaceremoved'";
+                          $stmt = $conn->prepare($sql);
+                          $stmt->bind_param("s", $hash);
+
+                          $password = filter_input(INPUT_POST, "resultpassword2", FILTER_SANITIZE_STRING);
+                          $hash = password_hash($password, PASSWORD_DEFAULT);
+                          $user_name_spaceremoved = str_replace(" ", "_", $user_name);
+                        
+                        
+                          $stmt->execute();
+                          $stmt->close();
+                          
+                          header("location:msql_blk.php");
+                          
+                        } catch (mysqli_sql_exception){
+                          $msgs = "Invalide username";
+                        }
+                        }else {
+                          $msgs = "your password most include atleast one integer";
+                      } 
+                    }else {
+                      $msgs = "your password most cosist of atleast a later.";
+                    }
+                  }
+               
+              }
+          }else {
+            $msgs = "your password most be atleast 8 digit that <br> 
+                    include uppercase , lowercase , integer and <br>
+                    special characters.";
+          }
+        }else {
+            $msgs = "The password your entered didn't match, make sure the two passwords are the same befor you apply change.";
+        }
+      }
+    }
+  }
+
+?>
 
 <!DOCTYPE html>
   <html lang="en">
@@ -89,15 +171,22 @@
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+      .message-holder{
+        color: red;
+        font-weight: bold;
+        max-width: 350px;
+        font-size: 17px;
       }
     </style>
   </head>
   <body>
     <div class="main-holder">
-      <div>
-        <?php echo $msgs . "<br>"; ?>
+      <div class="message-holder">
+        <?php echo $msgs; ?>
       </div>
       <form class="formholder" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
         <div class="name-holder">
@@ -140,92 +229,5 @@
 <?php
   mysqli_close($conn);
 ?>
-
-<?php 
-   $msgs = "";
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["submit"])) {
-      $password1 = $_POST["resultpassword"];
-      $password2 = $_POST["resultpassword2"];
-      $username = $_POST["username"];
-
-      if (empty($username)) {
-        $msgs = "Please enter a 'username'";
-      }elseif (empty($password1)) {
-        $msgs = "Please enter a 'new password'";
-      }elseif (empty($password2)) {
-        $msgs = "Please enter a 'confirm password'.";
-      }elseif (!empty($password1) && !empty($password2) && !empty($username)) {
-        if ($password1 == $password2) {
-          $password = filter_input(INPUT_POST,"resultpassword2", FILTER_SANITIZE_STRING);
-          if (strlen($password) >= 8 ) {
-            //echo "you are login";
-            function isPartUppercase($password, $conn) {
-              if(preg_match("/[A-Z]/", $password)===0) {
-                echo "your password most include at least one uppercase letter";
-              }else{
-                function ispartlowercase($password, $conn){
-                  $include_num = filter_input(INPUT_POST, "password", FILTER_SANITIZE_NUMBER_INT);
-                  if(preg_match("/[a-z]/", $password)===0) {
-                    echo "your password most include at least one lowercase letter";
-                  }else{
-                    if (strlen($password) !== strlen($include_num)) {
-                      $number = filter_input(INPUT_POST, "resultpassword2", FILTER_SANITIZE_NUMBER_INT);  
-                      if (strlen($number)) {      
-                        $user_name = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
-                        $user_name_spaceremoved = str_replace(" ","_", $user_name);
-                        $hash = password_hash($password, PASSWORD_DEFAULT);
-                        
-                        if (mysqli_connect_error()) {
-                          echo mysqli_connect_error();
-                          exit;
-                        }
-                        try{
-                          $sql = "UPDATE users_infor 
-                                  SET password = ?
-                                  WHERE user_name = '$user_name_spaceremoved'";
-                          $stmt = $conn->prepare($sql);
-                          $stmt->bind_param("s", $hash);
-
-                          $password = filter_input(INPUT_POST, "resultpassword2", FILTER_SANITIZE_STRING);
-                          $hash = password_hash($password, PASSWORD_DEFAULT);
-                          $user_name_spaceremoved = str_replace(" ", "_", $user_name);
-                        
-                        
-                          $stmt->execute();
-                          $stmt->close();
-                          
-                          header("location:msql_blk.php");
-                          
-                        } catch (mysqli_sql_exception){
-                          echo "Invalide username";
-                        }
-                        }else {
-                          echo "your password most include atleast one number";
-                      } 
-                    }else {
-                      echo "your password most cosist of atleast a later";
-                    }
-                  }
-                }
-                ispartlowercase($password, $conn);
-              }
-            }
-            isPartUppercase($password, $conn);
-          }else {
-            $msgs = "your password most be atleast 8 digit that <br> 
-                    include uppercase , lowercase , digits and <br>
-                    special characters.";
-          }
-        }else {
-            $msgs = "The password your entered didn't match, make sure the two passwords are the same befor you apply change.";
-        }
-      }
-    }
-  }
-
-?>
-
 
 
