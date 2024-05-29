@@ -54,7 +54,7 @@
     </div>
     <hr>
     <div class="order-submit-holder">
-      <a href="index.php">
+      <a href="registration.php">
         <button class="Submit-cart">Place your order</button>
       </a>
       

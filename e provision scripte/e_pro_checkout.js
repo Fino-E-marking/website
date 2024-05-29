@@ -54,6 +54,8 @@ cart.forEach(checkoutitems => {
   clickupdatebutton()
   updatecheckoutbody()
 });
+clickupdatebutton()
+updatecheckoutbody()
 document.querySelector('.js-list-body').innerHTML = cartsummaryHtml;
 
 document.querySelectorAll('.js-delete-link')

@@ -76,3 +76,13 @@ $sql = "CREATE TABLE loginlogs (
   }
 
 ?>
+
+
+<form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+        <label for="username">User Name:</label>
+        <input type="text" name="username" id="username" placeholder="enter username"><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="enter password"><br>
+        <a href="change_password.php">forgot password</a><br>
+        <button type="submit" name="submit" id="submit">login</button>
+      </form>
