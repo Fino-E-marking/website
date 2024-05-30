@@ -3,14 +3,46 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,user-scalable=no">
-    <link rel="stylesheet" href="store_list.css">
+    <link rel="stylesheet" href="store  styles/store_list_header.css">
+    <link rel="stylesheet" href="store  styles/store_list_body.css">
     <title>E Provision Store List</title>
   </head>
   <body>
-    <header>
-      
-    </header>
+    <div class="header-holder">
+      <div class="title">
+        E Provision Store List 
+      </div>
+      <div class="search-holder">
+        <input type="search" id="search-bar" name="search-bar" class="search-bar" placeholder="search">
+      </div>
+    </div>
+    <div class="body-holder">
+      <div class="body-section">
+        <div class="body-header">
+          <div class="header-text">Image</div>
+          <div class="header-text">Name</div>
+          <div class="header-text">Description</div>
+          <div class="header-text" >Least price</div>
+          <div class="header-text">Normal price</div>
+          <div class="header-text">Option</div>
+        </div>
+        <div class="body-main">
+          <div class="body-text image-holder">
+            <img class="product-image" src="store icons/guigos 2 400g.jpeg" alt="product icon">
+          </div>
+          <div class="body-text">Guigos 2 400g</div>
+          <div class="body-text">Tin</div>
+          <div class="body-text">3000</div>
+          <div class="body-text">3000</div>
+          <div class="body-text edit-text" >
+            Edit
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="store_list.js"></script>
+
+    <script src="store script/store_list_header.js"></script>
+    <script src="store script/store_list_body.js"></script>
   </body>
 </html>
